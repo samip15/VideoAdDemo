@@ -23,7 +23,7 @@ import com.google.android.gms.ads.rewarded.RewardedAdCallback;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 public class MainActivity extends AppCompatActivity {
-    private Button bnLoad,bnShow;
+    private Button bnLoad, bnShow;
     private TextView textPoints;
     private RewardedAd rewardedAd;
     private int points = 0;
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     //creating Object of RewardedAdCallback
     RewardedAdCallback rewardedAdCallback;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,25 +51,20 @@ public class MainActivity extends AppCompatActivity {
         bnLoad = findViewById(R.id.load_button);
         bnShow = findViewById(R.id.show_button);
         textPoints = findViewById(R.id.coins);
-        bnLoad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadRewardedAd();
-            }
+        bnLoad.setOnClickListener((v) -> {
+            loadRewardedAd();
         });
-        bnShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showRewardedAd();
-            }
+        bnShow.setOnClickListener((v) -> {
+            showRewardedAd();
         });
 
         // creating  RewardedAdLoadCallback for Rewarded Ad with some 2 Override methods
-        rewardedAdLoadCallback = new RewardedAdLoadCallback() {@Override
-        public void onRewardedAdLoaded() {
-            // Showing a simple Toast message to user when Rewarded Ad Failed to Load
-            Toast.makeText(MainActivity.this, "Rewarded Ad is Loaded", Toast.LENGTH_LONG).show();
-        }
+        rewardedAdLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                // Showing a simple Toast message to user when Rewarded Ad Failed to Load
+                Toast.makeText(MainActivity.this, "Rewarded Ad is Loaded", Toast.LENGTH_LONG).show();
+            }
 
             @Override
             public void onRewardedAdFailedToLoad(LoadAdError adError) {
@@ -82,11 +78,12 @@ public class MainActivity extends AppCompatActivity {
         if (rewardedAd.isLoaded()) {
 
             //creating the Rewarded Ad Callback and showing the user appropriate message
-            rewardedAdCallback = new RewardedAdCallback() {@Override
-            public void onRewardedAdOpened() {
-                // Showing a simple Toast message to user when Rewarded Ad is opened
-                Toast.makeText(MainActivity.this, "Rewarded Ad is Opened", Toast.LENGTH_LONG).show();
-            }
+            rewardedAdCallback = new RewardedAdCallback() {
+                @Override
+                public void onRewardedAdOpened() {
+                    // Showing a simple Toast message to user when Rewarded Ad is opened
+                    Toast.makeText(MainActivity.this, "Rewarded Ad is Opened", Toast.LENGTH_LONG).show();
+                }
 
                 @Override
                 public void onRewardedAdClosed() {
@@ -98,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onUserEarnedReward(RewardItem reward) {
                     // Showing a simple Toast message to user when user earned the reward by completely watching the Rewarded Ad
                     Toast.makeText(MainActivity.this, "You won the reward :" + reward.getAmount(), Toast.LENGTH_LONG).show();
-                    points = points+5;
-                    textPoints.setText("Points: "+points);
+                    points = points + 5;
+                    textPoints.setText("Points: " + points);
                 }
 
                 @Override
@@ -114,8 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Showing a simple Toast message to user when an Rewarded ad is shown to the user
             Toast.makeText(MainActivity.this, "Rewarded Ad  is loaded and Now showing ad  ", Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else {
             //Load the Rewarded ad if it is not loaded
             loadRewardedAd();
 
