@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/coins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available Coins:00"
+        android:textSize="25sp"
+        android:textColor="#1B0303"
+        android:letterSpacing="0.25"
+        android:layout_marginTop="20dp"
+        android:textStyle="italic"
+        android:layout_gravity="center" />
+    <Button
+        android:id="@+id/load_button"
+        android:background="@color/myColor1"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="Load Ad"
+        android:textAllCaps="false"
+        android:textStyle="bold"/>
+    <Button
+        android:id="@+id/show_button"
+        android:background="@color/myColor2"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="Show Button"
+        android:textAllCaps="false"
+        android:textStyle="bold"/>
+</LinearLayout>
